@@ -54,11 +54,7 @@ Diamond.prototype.getSize = function () {
 Diamond.prototype.pulseExpand = function () {
   var self = this, wordSpacing = 1, pulseDir = 'out';
   var pulseInterval = setInterval(function () {
-    if (pulseDir === 'out') {
-      wordSpacing++
-    } else {
-      wordSpacing--
-    }
+    pulseDir === 'out' ? wordSpacing++ : wordSpacing--
     self.$el.css('word-spacing', wordSpacing)
     if (wordSpacing === 0) { clearInterval(pulseInterval) }
     if (wordSpacing > 50) { pulseDir = 'in' }
