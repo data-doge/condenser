@@ -5,9 +5,8 @@ html, body {
 
 body {
   text-align: center;
-  font-family: Arial;
   font-family: 'Source Code Pro';
-  font-weight: 200;
+  font-weight: 300;
 }
 
 .diamond {
@@ -15,4 +14,6 @@ body {
   top: 50%;
   transform: translateY(-50%);
   font-size: 14px;
+  line-height: 0.75;
+  letter-spacing: 1px;
 }
