@@ -1,12 +1,22 @@
 $(document).ready(function () {
 
-  String.prototype.repeat = function (num) {
-    return new Array(num + 1).join(this)
-  }
-
   var cell = '+ '
   var $diamond = $('.diamond')
-  var rowLengths = [1,3,5,7,9,11,13,11,9,7,5,3,1]
+
+  function widthOfDiamondWithArea (area) {
+    var diagLength = Math.sqrt(2 * area);
+    diagLength =  Math.floor(diagLength);
+    if (diagLength.isEven) { diagLength++ }
+    return diagLength;
+  }
+
+  var diagLength = widthOfDiamondWithArea(500)
+  var rowLengths = [diagLength]
+
+  for (var i = diagLength - 2; i > 0; i -= 2) {
+    rowLengths.push(i)
+    rowLengths.unshift(i)
+  }
 
   _.each(rowLengths, function (rowLength) {
     var $row = $('<div></div>').text(cell.repeat(rowLength))
