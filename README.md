@@ -1,13 +1,13 @@
 # text visualizer
 
-### sketch
+### sketch v2
 
-displays a sample of text no longer than a certain amount of characters, with lines broken so that the text fits exactly into a circle.
+displays a sample of text no longer than a certain amount of characters, with lines broken so that the text fits exactly into a diamond.
 
 text scrolls from left to right at a speed you get to determine.
 
-the bottom bit is highlighted and the font is a bit bigger inside a box or something.
+the middle line in the diamond is displayed again somewhere below the diamond, underlined.
 
-this box holds a sentence, and some quality of the box will change based on characteristics of the sentence. the characteristics might be, sentiment, similarity of words, length, dunno.
+some quality of the underlined bit will change based on characteristics of the sentence, things like sentiment, similarity of words, length, dunno.
 
 whenever we reach a punctuation mark, or some other significant character, a small line will dart across the screen.
