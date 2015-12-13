@@ -14,7 +14,7 @@ Diamond.prototype.construct = function () {
 }
 
 Diamond.prototype.centerRowIndex = function () {
-  return Math.floor(this.size / 2)
+  return Math.floor(this.size / 2) - 1
 }
 
 // TODO: refactor this
