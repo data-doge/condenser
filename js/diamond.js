@@ -17,6 +17,7 @@ Diamond.prototype.centerRowIndex = function () {
   return Math.floor(this.size / 2)
 }
 
+// TODO: refactor this
 Diamond.prototype.getTextRows = function () {
   var textRows = new Array(this.size)
   var rowWidths = this.rowWidths()
@@ -26,6 +27,9 @@ Diamond.prototype.getTextRows = function () {
     var rowWidth = rowWidths[r]
     var rowChars = this.text.slice(0, rowWidth)
     this.text = this.text.slice(rowWidth)
+    if (rowChars.length !== rowWidth) {
+      rowChars += ' ' + '-'.repeat(rowWidth - rowChars.length - 2) + ' '
+    }
     textRows[r] = rowChars
   }
   return textRows
