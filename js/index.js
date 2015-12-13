@@ -5,4 +5,8 @@ $(document).ready(function () {
   var diamond = new Diamond(text)
   diamond.construct()
 
+  $(document).on('keyup', function () {
+    diamond.pulseExpand()
+  })
+
 })
