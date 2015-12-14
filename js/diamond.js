@@ -2,8 +2,20 @@ function Diamond (text) {
   this.text = text
   this.size = this.getSize()
   this.$el = $('.diamond')
+  this.canvas = document.getElementById('canvas')
+  this.setupCanvas()
   this.padText()
   this.construct()
+}
+
+Diamond.prototype.setupCanvas = function () {
+  var $body = $('body'), width = $body.width(), height = $body.height()
+  $(this.canvas).attr('width', width)
+  $(this.canvas).attr('height', height)
+  var ctx = this.canvas.getContext('2d')
+  ctx.strokeStyle = 'white'
+  ctx.lineWidth = '1'
+  ctx.lineCap = 'round'
 }
 
 Diamond.prototype.construct = function () {
@@ -115,4 +127,48 @@ Diamond.prototype.breathe = function (ms) {
     growing ? wordSpacing++ : wordSpacing--
     if (wordSpacing > 30 || wordSpacing <= 0) { growing = !growing }
   }, ms)
+}
+
+Diamond.prototype.punctuationDetected = function () {
+  var text = $('.middle').text()
+  return !!text.slice(-1).match(/[.,-\/#!$%\^&\*;:{}=\-_`~()\[\]\?\'\"]/g)
+}
+
+Diamond.prototype.spawnVector = function () {
+  var $window = $(window), width = $window.width(), height = $window.height()
+  var x1, y1, x2, y2;
+
+  // either
+    // x1 is anything and y is 0 or
+    // y1 is anything and x is 0
+  x1 = _.sample([_.random(width), 0]) // x1 is either something or 0
+  y1 = x1 === 0 ? _.random(height) : 0 // if 0, y is something
+
+  // if x1 > 0 && y1 === 0, then either
+    // x2 is anything and y2 is height or
+    // x2 is 0 or width and y2 is anything
+  if (x1 > 0 && y1 === 0) {
+    y2 = _.sample([_.random(height), height])
+    x2 = y2 === height ? _.random(width) : _.sample([0, width])
+  }
+
+  // if y1 > 0 && x1 === 0, then either
+    // y2 is anything and x2 is width or
+    // y2 is 0 or height and x2 is anything
+  if (y1 > 0 && x1 === 0) {
+    x2 = _.sample([_.random(width), width])
+    y2 = x2 === width ? _.random(height) : _.sample([0, height])
+  }
+
+  // console.log('x1: ', x1)
+  // console.log('y1: ', y1)
+  // console.log('x2: ', x2)
+  // console.log('y2: ', y2)
+
+  var ctx = this.canvas.getContext('2d')
+  ctx.beginPath()
+  ctx.moveTo(x1,y1)
+  ctx.lineTo(x2,y2)
+  ctx.stroke()
+
 }

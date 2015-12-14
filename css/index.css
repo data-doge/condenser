@@ -10,6 +10,13 @@ body {
   color: white;
 }
 
+canvas {
+  display: block;
+  position: absolute;
+  z-index: 100;
+  background: rgba(0,0,0,0);
+}
+
 .container {
   position: relative;
   top: 50%;
