@@ -6,15 +6,21 @@ html, body {
 body {
   text-align: center;
   font-family: 'Source Code Pro';
-  font-weight: 300;
 }
 
-.diamond {
+.container {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.diamond {
   font-size: 12px;
   line-height: 1;
-  letter-spacing: 0;
   font-weight: 700;
+}
+
+.highlighted-container {
+  margin-top: 40px;
+  font-weight: 600;
 }
