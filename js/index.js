@@ -7,6 +7,4 @@ $(document).ready(function () {
   diamond.pivot(100);
   diamond.breathe(1000);
 
-  $(document).on('keyup', function () { diamond.pulseExpand() })
-
 })

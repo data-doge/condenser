@@ -58,16 +58,6 @@ Diamond.prototype.getSize = function () {
   return size
 }
 
-Diamond.prototype.pulseExpand = function () {
-  var self = this, wordSpacing = 1, pulseDir = 'out';
-  var pulseInterval = setInterval(function () {
-    pulseDir === 'out' ? wordSpacing++ : wordSpacing--
-    self.$el.css('word-spacing', wordSpacing)
-    if (wordSpacing === 0) { clearInterval(pulseInterval) }
-    if (wordSpacing > 50) { pulseDir = 'in' }
-  }, 1)
-}
-
 Diamond.prototype.updateRows = function () {
   var self = this
   this.text = this.text.rotate()
