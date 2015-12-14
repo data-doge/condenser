@@ -2,6 +2,7 @@ function Diamond (text) {
   this.text = text
   this.size = this.getSize()
   this.$el = $('.diamond')
+  this.padText()
   this.constructRows()
 }
 
@@ -11,6 +12,14 @@ Diamond.prototype.constructRows = function () {
     var $textRowDiv = $('<div></div>').text(textRow)
     self.$el.append($textRowDiv)
   })
+}
+
+Diamond.prototype.padText = function () {
+  var rowWidths = this.rowWidths()
+  var totalCharsNeeded = _.sum(rowWidths)
+  var textLength = this.text.length
+  var padding = totalCharsNeeded - textLength
+  this.text += ' ' + '-'.repeat(padding - 2) + ' '
 }
 
 Diamond.prototype.centerRowIndex = function () {
@@ -29,9 +38,6 @@ Diamond.prototype.getTextRows = function () {
     var rowWidth = rowWidths[r]
     var rowChars = text.slice(0, rowWidth)
     text = text.slice(rowWidth)
-    if (rowChars.length !== rowWidth) {
-      rowChars += ' ' + '-'.repeat(rowWidth - rowChars.length - 2) + ' '
-    }
     textRows[r] = rowChars
   }
   return textRows
