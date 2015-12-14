@@ -33,9 +33,7 @@ Diamond.prototype.padText = function () {
   var totalCharsNeeded = _.sum(rowWidths)
   var textLength = this.text.length
   var padding = totalCharsNeeded - textLength - 2
-  if (padding > 0) {
-    this.text += ' ' + '-'.repeat(padding) + ' '
-  }
+  if (padding > 0) { this.text += ' ' + '-'.repeat(padding) + ' ' }
 }
 
 Diamond.prototype.centerRowIndex = function () {
