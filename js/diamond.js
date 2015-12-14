@@ -80,5 +80,7 @@ Diamond.prototype.updateRows = function () {
 
 Diamond.prototype.updateHighlightedText = function () {
   var text = $(this.$el.children()[this.centerRowIndex() + 1]).text()
-  $('.highlighted-text').text(text)
+  if (text.slice(-1) === ' ') { text = text.slice(0, -1) + '&nbsp;' }
+  if (text[0] === ' ') { text = '&nbsp;' + text.slice(1) }
+  $('.highlighted-text').html(text)
 }
