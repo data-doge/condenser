@@ -12,6 +12,7 @@ Diamond.prototype.construct = function () {
     var $textRowDiv = $('<div></div>').text(textRow)
     self.$el.append($textRowDiv)
   })
+  this.highlightText()
   this.updateHighlightedText()
 }
 
@@ -69,8 +70,12 @@ Diamond.prototype.updateRows = function () {
   })
 }
 
+Diamond.prototype.highlightText = function () {
+  $(this.$el.children()[this.centerRowIndex() + 1]).addClass('middle')
+}
+
 Diamond.prototype.updateHighlightedText = function () {
-  var text = $(this.$el.children()[this.centerRowIndex() + 1]).text()
+  var text = $('.middle').text()
   if (text.slice(-1) === ' ') { text = text.slice(0, -1) + '&nbsp;' }
   if (text[0] === ' ') { text = '&nbsp;' + text.slice(1) }
   $('.highlighted-text').html(text)
