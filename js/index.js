@@ -4,6 +4,7 @@ $(document).ready(function () {
 
   var diamond = new Diamond(text)
   diamond.scrollText();
+  diamond.pivot();
 
   $(document).on('keyup', function () { diamond.pulseExpand() })
 

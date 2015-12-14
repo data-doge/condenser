@@ -93,3 +93,12 @@ Diamond.prototype.scrollText = function () {
     self.updateHighlightedText()
   }, 70)
 }
+
+Diamond.prototype.pivot = function () {
+  var self = this, degrees = 0, clockwise = true
+   var pivotingInterval = setInterval(function () {
+    self.$el.css('transform', 'rotateY(' + degrees + 'deg)')
+    clockwise ? degrees++ : degrees--
+    if (Math.abs(degrees) > 45) { clockwise = !clockwise }
+  }, 50)
+}
