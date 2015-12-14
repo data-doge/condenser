@@ -5,7 +5,12 @@ $(document).ready(function () {
   var diamond = new Diamond(text)
 
   // $(document).on('keyup', function () { diamond.pulseExpand() })
-  // $(document).on('keyup', function () { diamond.updateRows() })
-  // setInterval(function () { diamond.updateRows() }, 80)
+  $(document).on('keypress', function () { animate() })
+  // setInterval(function () { animate() }, 80)
+
+  function animate () {
+    diamond.updateRows()
+    diamond.updateHighlightedText()
+  }
 
 })

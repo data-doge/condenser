@@ -3,15 +3,16 @@ function Diamond (text) {
   this.size = this.getSize()
   this.$el = $('.diamond')
   this.padText()
-  this.constructRows()
+  this.construct()
 }
 
-Diamond.prototype.constructRows = function () {
+Diamond.prototype.construct = function () {
   var self = this
   _.each(this.getTextRows(), function (textRow) {
     var $textRowDiv = $('<div></div>').text(textRow)
     self.$el.append($textRowDiv)
   })
+  this.updateHighlightedText()
 }
 
 Diamond.prototype.padText = function () {
@@ -73,10 +74,11 @@ Diamond.prototype.updateRows = function () {
   var textRows = this.getTextRows()
   _.each(this.$el.children(), function (textRowDiv, i) {
     var $textRowDiv = $(textRowDiv)
-    if (textRows[i] === ' ') {
-      $textRowDiv.html('&nbsp;')
-    } else {
-      $textRowDiv.text(textRows[i])
-    }
+    textRows[i] === ' ' ? $textRowDiv.html('&nbsp;') : $textRowDiv.text(textRows[i])
   })
+}
+
+Diamond.prototype.updateHighlightedText = function () {
+  var text = $(this.$el.children()[this.centerRowIndex() + 1]).text()
+  $('.highlighted-text').text(text)
 }
