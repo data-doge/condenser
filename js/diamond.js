@@ -99,6 +99,16 @@ Diamond.prototype.pivot = function () {
    var pivotingInterval = setInterval(function () {
     self.$el.css('transform', 'rotateY(' + degrees + 'deg)')
     clockwise ? degrees++ : degrees--
-    if (Math.abs(degrees) > 45) { clockwise = !clockwise }
+    if (Math.abs(degrees) > 45) {
+      clockwise = !clockwise
+      self.flicker()
+    }
   }, 50)
+}
+
+Diamond.prototype.flicker = function () {
+  $('body').css({ background: 'white', color: 'black' })
+  setTimeout(function () {
+    $('body').css({ background: 'black', color: 'white' })
+  }, 20)
 }
