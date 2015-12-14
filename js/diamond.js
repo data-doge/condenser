@@ -71,6 +71,10 @@ Diamond.prototype.updateRows = function () {
   var textRows = this.getTextRows()
   _.each(this.$el.children(), function (textRowDiv, i) {
     var $textRowDiv = $(textRowDiv)
-    $textRowDiv.text(textRows[i])
+    if (textRows[i] === ' ') {
+      $textRowDiv.html('&nbsp;')
+    } else {
+      $textRowDiv.text(textRows[i])
+    }
   })
 }
