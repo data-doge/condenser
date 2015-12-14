@@ -4,8 +4,10 @@ $(document).ready(function () {
 
   var diamond = new Diamond(text)
 
-  $(document).on('keyup', function () {
-    diamond.pulseExpand()
-  })
+  // $(document).on('keyup', function () { diamond.pulseExpand() })
+
+  setInterval(function () {
+    diamond.updateRows()
+  }, 80)
 
 })

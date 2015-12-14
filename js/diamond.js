@@ -8,8 +8,8 @@ function Diamond (text) {
 Diamond.prototype.constructRows = function () {
   var self = this
   _.each(this.getTextRows(), function (textRow) {
-    var $textRow = $('<div></div>').text(textRow)
-    self.$el.append($textRow)
+    var $textRowDiv = $('<div></div>').text(textRow)
+    self.$el.append($textRowDiv)
   })
 }
 
@@ -61,4 +61,14 @@ Diamond.prototype.pulseExpand = function () {
     if (wordSpacing === 0) { clearInterval(pulseInterval) }
     if (wordSpacing > 50) { pulseDir = 'in' }
   }, 1)
+}
+
+Diamond.prototype.updateRows = function () {
+  var self = this
+  this.text = this.text.rotate()
+  var textRows = this.getTextRows()
+  _.each(this.$el.children(), function (textRowDiv, i) {
+    var $textRowDiv = $(textRowDiv)
+    $textRowDiv.text(textRows[i])
+  })
 }
