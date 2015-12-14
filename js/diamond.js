@@ -51,7 +51,7 @@ Diamond.prototype.rowWidths = function () {
 Diamond.prototype.getSize = function () {
   var size = Math.sqrt(2 * this.text.length)
   size =  Math.floor(size)
-  if (size.isEven) { size++ }
+  if (size.isEven()) { size++ }
   return size
 }
 
