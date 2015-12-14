@@ -84,3 +84,11 @@ Diamond.prototype.updateHighlightedText = function () {
   if (text[0] === ' ') { text = '&nbsp;' + text.slice(1) }
   $('.highlighted-text').html(text)
 }
+
+Diamond.prototype.scrollText = function () {
+  var self = this;
+  var scrollingInterval = setInterval(function () {
+    self.updateRows()
+    self.updateHighlightedText()
+  }, 70)
+}
