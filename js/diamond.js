@@ -139,8 +139,6 @@ Diamond.prototype.spawnVector = function () {
   var ctx = this.canvas.getContext('2d')
   var x1, y1, x2, y2;
 
-  ctx.clearRect(0, 0, width, height)
-
   x1 = _.sample([_.random(width), 0])
   y1 = x1 === 0 ? _.random(height) : 0
 
@@ -157,4 +155,6 @@ Diamond.prototype.spawnVector = function () {
   ctx.moveTo(x1,y1)
   ctx.lineTo(x2,y2)
   ctx.stroke()
+
+  setTimeout(function () { ctx.clearRect(0, 0, width, height) }, 30)
 }
