@@ -14,7 +14,7 @@ Diamond.prototype.setupCanvas = function () {
   $(this.canvas).attr('height', height)
   var ctx = this.canvas.getContext('2d')
   ctx.strokeStyle = 'white'
-  ctx.lineWidth = '5'
+  ctx.lineWidth = '1'
   ctx.lineCap = 'round'
 }
 
@@ -96,6 +96,7 @@ Diamond.prototype.scrollText = function (ms) {
   var scrollingInterval = setInterval(function () {
     self.updateRows()
     self.updateHighlightedText()
+    if (self.punctuationDetected()) { self.spawnVector() }
   }, ms)
 }
 
@@ -154,5 +155,5 @@ Diamond.prototype.spawnVector = function () {
   ctx.lineTo(x2,y2)
   ctx.stroke()
 
-  setTimeout(function () { ctx.clearRect(0, 0, width, height) }, 30)
+  setTimeout(function () { ctx.clearRect(0, 0, width, height) }, 1)
 }
