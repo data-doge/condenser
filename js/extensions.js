@@ -4,8 +4,8 @@ String.prototype.repeat = function (num) {
 
 String.prototype.rotate = function (num) {
   num = num || 1
-  var lastChars = this.slice(-num)
-  return lastChars + this.slice(0,-num)
+  var firstChars = this.slice(0, num)
+  return this.slice(num) + firstChars
 }
 
 Number.prototype.isEven = function (num) {
