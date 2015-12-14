@@ -86,15 +86,15 @@ Diamond.prototype.updateHighlightedText = function () {
   $('.highlighted-text').html(text)
 }
 
-Diamond.prototype.scrollText = function () {
+Diamond.prototype.scrollText = function (ms) {
   var self = this;
   var scrollingInterval = setInterval(function () {
     self.updateRows()
     self.updateHighlightedText()
-  }, 70)
+  }, ms)
 }
 
-Diamond.prototype.pivot = function () {
+Diamond.prototype.pivot = function (ms) {
   var self = this, degrees = 0, clockwise = true
    var pivotingInterval = setInterval(function () {
     self.$el.css('transform', 'rotateY(' + degrees + 'deg)')
@@ -103,12 +103,21 @@ Diamond.prototype.pivot = function () {
       clockwise = !clockwise
       self.flicker()
     }
-  }, 100)
+  }, ms)
 }
 
 Diamond.prototype.flicker = function () {
   $('body').css({ background: 'white', color: 'black' })
   setTimeout(function () {
     $('body').css({ background: 'black', color: 'white' })
-  }, 20)
+  }, 50)
+}
+
+Diamond.prototype.breathe = function (ms) {
+  var self = this, wordSpacing = 0, growing = true
+   var breatheInterval = setInterval(function () {
+    self.$el.css('word-spacing', wordSpacing)
+    growing ? wordSpacing++ : wordSpacing--
+    if (wordSpacing > 30 || wordSpacing <= 0) { growing = !growing }
+  }, ms)
 }
