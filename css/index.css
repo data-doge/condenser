@@ -6,6 +6,8 @@ html, body {
 body {
   text-align: center;
   font-family: 'Source Code Pro';
+  background: black;
+  color: white;
 }
 
 .container {
