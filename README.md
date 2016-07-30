@@ -1,13 +1,31 @@
-# text visualizer
+# condenser
 
-### sketch v2
+cooling process
 
-displays a sample of text no longer than a certain amount of characters, with lines broken so that the text fits exactly into a diamond.
+## install
 
-text scrolls from left to right at a speed you get to determine.
+```
+git clone https://github.com/data-doge/condenser
+cd
+npm install
+```
 
-the middle line in the diamond is displayed again somewhere below the diamond, underlined.
+## develop
 
-some quality of the underlined bit will change based on characteristics of the sentence, things like sentiment, similarity of words, length, dunno.
+```
+npm start
+```
 
-whenever we reach a punctuation mark, or some other significant character, a small line will dart across the screen.
+browse to <http://localhost:9966/>.
+
+## test
+
+```
+npm test
+```
+
+## deploy
+
+```
+npm run deploy
+```
