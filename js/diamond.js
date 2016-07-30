@@ -23,20 +23,8 @@ class Diamond {
     this.text = text
     this.size = this.getSize()
     this.$el = $('.diamond')
-    this.canvas = document.getElementById('canvas')
-    this.setupCanvas()
     this.padText()
     this.construct()
-  }
-
-  setupCanvas () {
-    let $body = $('body'), width = $body.width(), height = $body.height()
-    $(this.canvas).attr('width', width)
-    $(this.canvas).attr('height', height)
-    let ctx = this.canvas.getContext('2d')
-    ctx.strokeStyle = 'white'
-    ctx.lineWidth = '1'
-    ctx.lineCap = 'round'
   }
 
   construct () {
@@ -117,7 +105,6 @@ class Diamond {
     let scrollingInterval = setInterval(function () {
       self.updateRows()
       self.updateHighlightedText()
-      if (self.punctuationDetected()) { self.spawnVector() }
     }, ms)
   }
 
@@ -128,16 +115,8 @@ class Diamond {
       clockwise ? degrees++ : degrees--
       if (Math.abs(degrees) > 60) {
         clockwise = !clockwise
-        self.flicker()
       }
     }, ms)
-  }
-
-  flicker () {
-    $('body').css({ background: 'white', color: 'black' })
-    setTimeout(function () {
-      $('body').css({ background: 'black', color: 'white' })
-    }, 50)
   }
 
   breathe (ms) {
@@ -147,36 +126,6 @@ class Diamond {
       growing ? wordSpacing++ : wordSpacing--
       if (wordSpacing > 30 || wordSpacing <= 0) { growing = !growing }
     }, ms)
-  }
-
-  punctuationDetected () {
-    let text = $('.middle').text()
-    return !!text.slice(-1).match(/[.,-\/#!$%\^&\*;:{}=\-_`~()\[\]\?\'\"]/g)
-  }
-
-  spawnVector () {
-    let $canvas = $(this.canvas), width = $canvas.width(), height = $canvas.height()
-    let ctx = this.canvas.getContext('2d')
-    let x1, y1, x2, y2;
-
-    x1 = sample([random(width), 0])
-    y1 = x1 === 0 ? random(height) : 0
-
-    if (x1 > 0 && y1 === 0) {
-      y2 = sample([random(height), height])
-      x2 = y2 === height ? random(width) : sample([0, width])
-    }
-    if (y1 > 0 && x1 === 0) {
-      x2 = sample([random(width), width])
-      y2 = x2 === width ? random(height) : sample([0, height])
-    }
-
-    ctx.beginPath()
-    ctx.moveTo(x1,y1)
-    ctx.lineTo(x2,y2)
-    ctx.stroke()
-
-    setTimeout(function () { ctx.clearRect(0, 0, width, height) }, 1)
   }
 }
 
