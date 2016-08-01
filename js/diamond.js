@@ -28,10 +28,9 @@ class Diamond {
   }
 
   construct () {
-    let self = this
-    each(this.getTextRows(), function (textRow) {
+    each(this.getTextRows(), (textRow) => {
       let $textRowDiv = $('<div></div>').text(textRow)
-      self.$el.append($textRowDiv)
+      this.$el.append($textRowDiv)
     })
     this.highlightText()
     this.updateHighlightedText()
@@ -42,7 +41,7 @@ class Diamond {
     let totalCharsNeeded = sum(rowWidths)
     let textLength = this.text.length
     let padding = totalCharsNeeded - textLength - 2
-    if (padding > 0) { this.text += ' ' + '.'.repeat(padding) + ' ' }
+    if (padding > 0) { this.text += ` ${'.'.repeat(padding)} ` }
   }
 
   centerRowIndex () {
@@ -79,10 +78,9 @@ class Diamond {
   }
 
   updateRows () {
-    let self = this
     this.text = this.text.rotate()
     let textRows = this.getTextRows()
-    each(this.$el.children(), function (textRowDiv, i) {
+    each(this.$el.children(), (textRowDiv, i) => {
       let $textRowDiv = $(textRowDiv)
       let text = textRows[i] === ' ' ? '&nbsp;' : textRows[i]
       $textRowDiv.html(text)
@@ -101,17 +99,16 @@ class Diamond {
   }
 
   scrollText (ms) {
-    let self = this;
-    let scrollingInterval = setInterval(function () {
-      self.updateRows()
-      self.updateHighlightedText()
+    let scrollingInterval = setInterval(() => {
+      this.updateRows()
+      this.updateHighlightedText()
     }, ms)
   }
 
   pivot (ms) {
-    let self = this, degrees = 0, clockwise = true
-    let pivotingInterval = setInterval(function () {
-      self.$el.css('transform', 'rotateY(' + degrees + 'deg)')
+    let degrees = 0, clockwise = true
+    let pivotingInterval = setInterval(() => {
+      this.$el.css('transform', 'rotateY(' + degrees + 'deg)')
       clockwise ? degrees++ : degrees--
       if (Math.abs(degrees) > 60) {
         clockwise = !clockwise
@@ -120,9 +117,9 @@ class Diamond {
   }
 
   breathe (ms) {
-    let self = this, wordSpacing = 0, growing = true
-    let breatheInterval = setInterval(function () {
-      self.$el.css('word-spacing', wordSpacing)
+    let wordSpacing = 0, growing = true
+    let breatheInterval = setInterval(() => {
+      this.$el.css('word-spacing', wordSpacing)
       growing ? wordSpacing++ : wordSpacing--
       if (wordSpacing > 30 || wordSpacing <= 0) { growing = !growing }
     }, ms)
