@@ -1,4 +1,5 @@
 import request from 'request'
+import shuffle from 'lodash.shuffle'
 
 const fetchThoughts = (cb) => {
   let url = 'https://spreadsheets.google.com/feeds/list/1rZ2aDGeMN-oaRRCFHs0Ddqvgs60pIYBAAmhxuXiMtjk/od6/public/basic?alt=json'
@@ -10,7 +11,7 @@ const fetchThoughts = (cb) => {
       type === 'positive' ? goods.push(text) : bads.push(text)
     })
 
-    cb(goods, bads)
+    cb(shuffle(goods), shuffle(bads))
   })
 }
 

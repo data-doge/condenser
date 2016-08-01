@@ -42,7 +42,7 @@ class Diamond {
     let totalCharsNeeded = sum(rowWidths)
     let textLength = this.text.length
     let padding = totalCharsNeeded - textLength - 2
-    if (padding > 0) { this.text += ' ' + '-'.repeat(padding) + ' ' }
+    if (padding > 0) { this.text += ' ' + '.'.repeat(padding) + ' ' }
   }
 
   centerRowIndex () {

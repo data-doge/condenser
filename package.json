@@ -37,6 +37,7 @@
     "lodash.foreach": "^4.4.1",
     "lodash.random": "^3.1.6",
     "lodash.sample": "^4.2.0",
+    "lodash.shuffle": "^4.1.0",
     "lodash.sum": "^4.0.2",
     "request": "^2.74.0"
   },
