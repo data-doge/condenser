@@ -6,7 +6,7 @@ cooling process
 
 ```
 git clone https://github.com/data-doge/condenser
-cd
+cd condenser
 npm install
 ```
 
@@ -17,12 +17,6 @@ npm start
 ```
 
 browse to <http://localhost:9966/>.
-
-## test
-
-```
-npm test
-```
 
 ## deploy
 
